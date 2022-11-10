@@ -1,0 +1,27 @@
+@use 'sass:list';
+
+@mixin linear($direction, $colors...) {
+  background: list.nth($colors, 1);
+  background: linear-gradient($direction, $colors);
+}
+
+@mixin radial($colors...) {
+  background: list.nth($colors, 1);
+  background: radial-gradient(circle, $colors);
+}
+
+@function down() {
+  @return 180deg;
+}
+
+@function up() {
+  @return 0deg;
+}
+
+@function right() {
+  @return 90deg;
+}
+
+@function left() {
+  @return 270deg;
+}

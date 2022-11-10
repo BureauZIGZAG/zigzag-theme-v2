@@ -1,0 +1,10 @@
+<?php
+
+use Engine\lib\Component;
+
+final class {componentName} extends Component {
+    function get_template(): string
+    {
+        return __DIR__ . '/{componentName}.template.php';
+    }
+}

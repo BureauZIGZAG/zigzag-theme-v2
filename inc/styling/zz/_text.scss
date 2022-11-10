@@ -1,0 +1,28 @@
+
+@mixin headers($startAt: 1, $endAt: 6) {
+  $selector: 'h#{$startAt}';
+
+  @for $i from $startAt + 1 through $endAt {
+    $selector: $selector + ', h#{$i}';
+  }
+
+  #{$selector} {
+    @content;
+  }
+}
+
+@mixin size($sizes...) {
+  $joined-sizes: '';
+  $first: true;
+  @each $size in $sizes {
+    @if $first == false {
+      $joined-sizes: #{$joined-sizes}, #{$size};
+    } @else {
+      $joined-sizes: #{$size};
+      $first: false;
+    }
+  }
+
+  font-size: calc(min(#{$joined-sizes}));
+  line-height: 1.2;
+}

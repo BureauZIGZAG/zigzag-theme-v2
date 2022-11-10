@@ -1,0 +1,29 @@
+@mixin template($name) {
+  body.page-template-#{$name} {
+    @content;
+  }
+}
+
+@mixin single($post_type) {
+  body.single-#{post_type} {
+    @content;
+  }
+}
+
+@mixin page-id($id) {
+  body.page-id-#{$id} {
+    @content;
+  }
+}
+
+@mixin logged-in() {
+  body.logged-in & {
+    @content;
+  }
+}
+
+@mixin logged-out() {
+  body:not(.logged-out) & {
+    @content;
+  }
+}

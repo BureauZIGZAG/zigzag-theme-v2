@@ -1,0 +1,41 @@
+@function unquote_safe($value) {
+  @if type-of($value) == 'string' {
+      @return unquote($value);
+  }
+  @return $value;
+}
+
+@mixin body-attr($attr, $value) {
+  body[#{unquote_safe($attr)}="#{unquote_safe($value)}"] & {
+    @content;
+  }
+}
+
+@mixin body-class($class) {
+  body.#{unquote($class)} & {
+    @content;
+  }
+}
+
+@mixin square() {
+  aspect-ratio: 1/1;
+}
+
+@mixin has_scrolled() {
+  @include body-attr(data-has-scrolled, true) {
+    @content;
+  }
+}
+
+@mixin hide_on_scroll() {
+  @include has_scrolled {
+    display: none;
+  }
+}
+
+@mixin show_on_scroll($displayOnScroll:block) {
+  display: none;
+  @include has_scrolled {
+    display: $displayOnScroll;
+  }
+}

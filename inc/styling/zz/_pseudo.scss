@@ -1,0 +1,38 @@
+@use '../dependencies/_functions';
+@use 'zz/absolute';
+
+%fill-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+}
+
+%parent {
+  position: relative;
+  z-index: 1;
+}
+
+@mixin pseudo($type, $args...) {
+  @extend %parent;
+  &:#{$type} {
+    @include functions.list-has($args, fill) {
+      @extend %fill-parent;
+    }
+    @include functions.list-has($args, absolute) {
+      position: absolute;
+    }
+    content: '';
+    @content;
+  }
+}
+
+@mixin before($args...) {
+  @include pseudo(before, $args...) {@content}
+}
+
+@mixin after($args...) {
+  @include pseudo(after, $args...) {@content}
+}

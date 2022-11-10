@@ -1,0 +1,4 @@
+// shorthand for getting a color from the tailwind config
+@function color($color, $opacity: 1) {
+  @return theme('colors.#{$color}' / $opacity);
+}

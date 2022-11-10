@@ -1,0 +1,11 @@
+@mixin body-attr($attr, $value) {
+  body[#{unquote($attr)}="#{unquote($value)}"] & {
+    @content;
+  }
+}
+
+@mixin body-class($class) {
+  body.#{unquote($class)} & {
+    @content;
+  }
+}

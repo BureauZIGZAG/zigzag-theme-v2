@@ -1,0 +1,24 @@
+@function spacingValue($spacing, $smallSpacing, $paddingType:py) {
+  $hasSmallSpacing: $smallSpacing < $spacing;
+
+  $base: "#{$paddingType}-[#{$spacing}]";
+  $small: "#{$paddingType}-[#{$smallSpacing}]";
+
+  @if($hasSmallSpacing) {
+    @return "#{$small} lg:#{$base}";
+  } @else {
+    @return "#{$base}";
+  }
+}
+
+@mixin spacing($spacing, $smallSpacing: $spacing) {
+  @apply #{spacingValue($spacing, $smallSpacing)};
+
+  &-top {
+    @apply #{spacingValue($spacing, $smallSpacing, pt)};
+  }
+
+  &-bottom {
+    @apply #{spacingValue($spacing, $smallSpacing, pb)};
+  }
+}

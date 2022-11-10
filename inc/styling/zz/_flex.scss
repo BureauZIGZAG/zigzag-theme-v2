@@ -1,0 +1,22 @@
+@mixin center() {
+  @apply flex justify-center items-center;
+}
+
+@mixin between() {
+  @apply justify-between flex;
+}
+
+@mixin around() {
+  @apply justify-around flex;
+}
+
+@mixin items-center() {
+  @apply items-center flex;
+}
+
+@mixin fill($child) {
+  @apply flex;
+  > #{$child} {
+    @apply flex-1;
+  }
+}

@@ -1,0 +1,24 @@
+@mixin types($types...) {
+  $selectors: ();
+
+  @each $type in $types {
+    $_type: 'input[type="#{unquote($type)}"]';
+    $selectors: append($selectors, $_type, "comma");
+  }
+
+  @if(length($selectors) > 0) {
+    #{$selectors} {
+      @content;
+    }
+  }
+}
+
+@mixin inputs() {
+  @at-root {
+    @layer base {
+      input, textarea, select {
+        @content;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use 'zz/spacing';
+
+.spacing {
+  @include spacing.spacing(100px, 50px);
+
+  &-small {
+    @include spacing.spacing(75px, 40px);
+  }
+
+  &-smaller {
+    @include spacing.spacing(50px, 30px);
+  }
+}

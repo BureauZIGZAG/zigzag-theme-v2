@@ -1,0 +1,6 @@
+@import 'styling/autoload';
+
+.{componentName} {
+  background: tomato;
+  color: white;
+}

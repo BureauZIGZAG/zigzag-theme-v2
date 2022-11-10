@@ -1,0 +1,5 @@
+@use 'zz/wp';
+
+@include wp.template('template-{pageName}') {
+    background: tomato;
+}
