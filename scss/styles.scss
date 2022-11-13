@@ -1,3 +1,4 @@
-@import "../node_modules/tailwindcss/base.css";
-@import "../node_modules/tailwindcss/components.css";
-@import "../node_modules/tailwindcss/utilities.css";
+@use 'styling/helpers/pseudo';
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";

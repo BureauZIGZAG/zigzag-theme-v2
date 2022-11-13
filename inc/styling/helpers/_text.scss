@@ -1,4 +1,3 @@
-
 @mixin headers($startAt: 1, $endAt: 6) {
   $selector: 'h#{$startAt}';
 

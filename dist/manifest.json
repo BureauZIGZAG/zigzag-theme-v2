@@ -19,12 +19,12 @@
     "file": "assets/main.css",
     "src": "main.css"
   },
-  "Components/HeaderComponent/_HeaderComponent.export.css": {
-    "file": "exports/css/HeaderComponent.css",
-    "src": "Components/HeaderComponent/_HeaderComponent.export.css"
-  },
   "Components/FooterComponent/_FooterComponent.export.css": {
     "file": "exports/css/FooterComponent.css",
     "src": "Components/FooterComponent/_FooterComponent.export.css"
+  },
+  "Components/HeaderComponent/_HeaderComponent.export.css": {
+    "file": "exports/css/HeaderComponent.css",
+    "src": "Components/HeaderComponent/_HeaderComponent.export.css"
   }
 }

@@ -72,13 +72,6 @@ export default defineConfig({
             return 'assets/[name][extname]'
         },
       }
-      
-      /*
-      output: {
-          entryFileNames: `[name].js`,
-          chunkFileNames: `[name].js`,
-          assetFileNames: `[name].[ext]`
-      }*/
     },
 
     // minifying switch
@@ -99,33 +92,19 @@ export default defineConfig({
     // serve over http
     https: false,
 
-    // serve over httpS
-    // to generate localhost certificate follow the link:
-    // https://github.com/FiloSottile/mkcert - Windows, MacOS and Linux supported - Browsers Chrome, Chromium and Firefox (FF MacOS and Linux only)
-    // installation example on Windows 10:
-    // > choco install mkcert (this will install mkcert)
-    // > mkcert -install (global one time install)
-    // > mkcert localhost (in project folder files localhost-key.pem & localhost.pem will be created)
-    // uncomment below to enable https
-    //https: {
-    //  key: fs.readFileSync('localhost-key.pem'),
-    //  cert: fs.readFileSync('localhost.pem'),
-    //},
-
     hmr: {
       host: 'localhost',
       //port: 443
     },
-    
+
   },
 
   // required for in-browser template compilation
   // https://v3.vuejs.org/guide/installation.html#with-a-bundler
   resolve: {
     alias: {
-        zz: resolve(__dirname, './inc/styling/zz'),
         styling: resolve(__dirname, './inc/styling'),
-      //vue: 'vue/dist/vue.esm-bundler.js'
+        scripts: resolve(__dirname, './inc/scripts'),
     }
   }
 })

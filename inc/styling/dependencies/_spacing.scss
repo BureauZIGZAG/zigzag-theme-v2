@@ -1,4 +1,4 @@
-@use 'zz/spacing';
+@use 'styling/helpers/spacing';
 
 .spacing {
   @include spacing.spacing(100px, 50px);

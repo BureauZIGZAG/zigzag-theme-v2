@@ -1,4 +1,4 @@
-@use 'zz/wp';
+@use 'styling/helpers/wp';
 
 @include wp.template('template-{pageName}') {
     background: tomato;
