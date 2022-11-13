@@ -1,6 +1,6 @@
 <?php
 
-namespace Engine\lib;
+namespace Theme\Inc\Lib;
 
 class ComponentData {
     private static $active_instance = null;

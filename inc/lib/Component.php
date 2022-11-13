@@ -1,6 +1,6 @@
 <?php
 
-namespace Engine\lib;
+namespace Theme\Inc\Lib;
 
 abstract class Component {
     private ComponentData $props;
@@ -16,7 +16,7 @@ abstract class Component {
 
     final public static function get(array $props = []) {
         $component = new static($props);
-        ComponentAssetsLoader::get()->attach(get_class($component), $component->preload_css());
+        ComponentAssetsLoader::get()->attach(get_class($component));
         return $component;
     }
 
@@ -38,5 +38,4 @@ abstract class Component {
     protected function before_render(): bool {
         return true;
     }
-    protected function preload_css():bool { return false; }
 }

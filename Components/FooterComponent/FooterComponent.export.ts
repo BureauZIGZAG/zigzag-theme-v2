@@ -1,0 +1,1 @@
+console.log('FooterComponent.export.ts');

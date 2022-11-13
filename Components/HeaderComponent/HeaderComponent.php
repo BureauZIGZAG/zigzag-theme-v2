@@ -1,6 +1,6 @@
 <?php
 
-use Engine\lib\Component;
+use Theme\Inc\Lib\Component;
 
 final class HeaderComponent extends Component {
     function get_template(): string

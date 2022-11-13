@@ -53,23 +53,18 @@ export default defineConfig({
               return `exports/${extension}/${name}`;
             }
 
-            return 'assets/[name][extname]'
+            return 'assets/[name][extname]';
         },
 
         chunkFileNames: (file) => {
             if(file.name.includes('.export')) {
                 let name = file.name.replace('.export', '');
-                const extension = file.name.split('.').pop();
-
                 name = name.split('/');
                 name = name[name.length - 1];
-
-                name = name.replace('_', '');
-
                 return `exports/js/${name}.js`;
             }
 
-            return 'assets/[name][extname]'
+            return 'assets/[name][extname]';
         },
       }
     },

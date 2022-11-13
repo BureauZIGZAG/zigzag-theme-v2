@@ -1,48 +1,22 @@
 <?php
 
-namespace Engine\lib;
-
-use Buffer;
+namespace Theme\Inc\Lib;
 
 final class ComponentAssetsLoader
 {
-    private string $styleBase = '/dist/exports/scss/';
-    private string $scriptBase = '/dist/exports/ts/';
+    private string $cssBase = 'dist/exports/css/';
+    private string $jsBase = 'dist/exports/js/';
+
+    private array $css = [];
+    private array $js = [];
 
     private static $instance = null;
-    private $components = [];
-
-    private array $enqueue_footer = [];
-    private array $enqueue_header = [];
 
     private function __construct()
     {
-        $this->init();
-        add_action('wp_footer', function() {
-            $this->calc();
+        ob_start(function($content) {
+            return $this->parse($content);
         });
-    }
-
-    private function init() {
-        if(!is_user_logged_in()) {
-            $this->get_transients();
-        }
-    }
-
-    private function calc()
-    {
-        $footer = implode('', $this->enqueue_footer);
-        $header = implode('', $this->enqueue_header);
-
-        Buffer::add_replace_rule(
-            '/<\/head>/',
-            $header . '</head>'
-        );
-
-        Buffer::add_replace_rule(
-            '/<\/body>/',
-            $footer . '</body>'
-        );
     }
 
     public static function get(): ComponentAssetsLoader
@@ -54,59 +28,17 @@ final class ComponentAssetsLoader
         return self::$instance;
     }
 
-    public function attach(string $component, bool $preload_css = false)
+    public function attach(string $component)
     {
-        if(!in_array($component, $this->components)) {
-            $this->components[] = $component;
-            $this->get_assets_from_component($component, $preload_css);
+        $css = $this->cssBase . $component . '.css';
+        $js = $this->jsBase . $component . '.js';
+
+        if (file_exists(get_template_directory() . '/' . $css)) {
+            $this->css[] = $css;
         }
 
-        $this->after_attach();
-    }
-
-    private function after_attach() {
-        if(is_user_logged_in()) {
-            $page = get_the_ID();
-            $transient = "zz_assets_$page";
-            set_transient($transient, $this->components, 60 * 60 * 24);
-            $styleTransient = "zz_styles_$page";
-            set_transient($styleTransient, $this->enqueue_header, 60 * 60 * 24);
-            $scriptTransient = "zz_scripts_$page";
-            set_transient($scriptTransient, $this->enqueue_footer, 60 * 60 * 24);
-        }
-    }
-
-    private function get_transients() {
-        $page = get_the_ID();
-        $transient = "zz_assets_$page";
-        $styleTransient = "zz_styles_$page";
-        $scriptTransient = "zz_scripts_$page";
-
-        $components = get_transient($transient);
-        $styles = get_transient($styleTransient);
-        $scripts = get_transient($scriptTransient);
-
-        $this->components = is_array($components) ? $components : [];
-        $this->enqueue_header = is_array($styles) ? $styles : [];
-        $this->enqueue_footer = is_array($scripts) ? $scripts : [];
-    }
-
-    private function get_assets_from_component(string $component, bool $preload_css = false)
-    {
-        $theme = get_template_directory();
-        $themeUrl = get_template_directory_uri();
-
-        $styleName = $this->styleBase . $component . '.css';
-        $scriptName = $this->scriptBase . $component . '.js';
-
-        if (file_exists($theme . $styleName)) {
-            $styleUrl = $themeUrl . $styleName;
-            $this->enqueue_header[] = $this->get_style_element($styleUrl, $preload_css);
-        }
-
-        if (file_exists($theme . $scriptName)) {
-            $scriptUrl = $themeUrl . $scriptName;
-            $this->enqueue_footer[] = "<script defer src='$scriptUrl'></script>";
+        if (file_exists(get_template_directory() . '/' . $js)) {
+            $this->js[] = $js;
         }
     }
 
@@ -115,12 +47,38 @@ final class ComponentAssetsLoader
         return "<script defer src='$scriptUrl'></script>";
     }
 
-    private function get_style_element(string $styleUrl, bool $preload_css = false): string
+    private function get_style_element(string $styleUrl): string
     {
-        if(!$preload_css){
-            return "<link rel='stylesheet' href='$styleUrl' />";
-        } else {
-            return "<link rel='defer-css' href='$styleUrl' /> <noscript><link rel='stylesheet' href='$styleUrl' /></noscript>";
-        }
+        return "<link rel='stylesheet' href='$styleUrl' />";
+    }
+
+    private function parse($content)
+    {
+        $content = $this->place_css($content);
+        $content = $this->place_js($content);
+
+        return $content;
+    }
+
+    private function place_css($content)
+    {
+        $css = array_map(function($styleUrl) {
+            return $this->get_style_element(get_template_directory_uri() . '/' . $styleUrl);
+        }, $this->css);
+
+        $css = implode('', $css);
+
+        return str_replace('</head>', $css . '</head>', $content);
+    }
+
+    private function place_js($content)
+    {
+        $js = array_map(function($scriptUrl) {
+            return $this->get_script_element(get_template_directory_uri() . '/' . $scriptUrl);
+        }, $this->js);
+
+        $js = implode('', $js);
+
+        return str_replace('</body>', $js . '</body>', $content);
     }
 }
