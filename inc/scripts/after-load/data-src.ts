@@ -1,8 +1,5 @@
-import {onLoad} from "./onLoad";
-
-
-onLoad(() => {
-   const elements = document.querySelectorAll('[data-src]');
+(() => {
+    const elements = document.querySelectorAll('[data-src]');
     elements.forEach((element) => {
         const src = element.getAttribute('data-src');
         element.setAttribute('src', src);
@@ -18,11 +15,9 @@ onLoad(() => {
             }
         });
     });
-});
 
-onLoad(() => {
-   const styleSheets = document.querySelectorAll('link[rel="defer-css"]');
+    const styleSheets = document.querySelectorAll('link[rel="defer-css"]');
     styleSheets.forEach((styleSheet) => {
-       styleSheet.setAttribute('rel', 'stylesheet');
+        styleSheet.setAttribute('rel', 'stylesheet');
     });
-});
+})();

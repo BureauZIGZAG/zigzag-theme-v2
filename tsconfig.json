@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "types": [
+      "vite-plugin-glob/client"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "ES2015",
+      "dom"
+    ],
+  }
+}

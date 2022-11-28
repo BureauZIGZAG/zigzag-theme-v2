@@ -1,0 +1,23 @@
+@use 'utils/text';
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  @apply flex flex-col;
+  @apply font-primary;
+
+  font-size: 16px;
+  line-height: 1.5;
+
+  > main {
+    flex: 1;
+  }
+
+  @include text.headers {
+    @apply font-header;
+  }
+}
