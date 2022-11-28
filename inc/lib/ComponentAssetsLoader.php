@@ -1,6 +1,6 @@
 <?php
 
-namespace Theme\Inc\Lib;
+namespace Theme\Inc\lib;
 
 final class ComponentAssetsLoader
 {
