@@ -16,7 +16,7 @@ abstract class Component {
 
     final public static function get(array $props = []) {
         $component = new static($props);
-        ComponentAssetsLoader::get()->attach(get_class($component));
+        ComponentAssetsLoader::attach(get_class($component));
         return $component;
     }
 

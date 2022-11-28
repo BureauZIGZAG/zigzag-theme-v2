@@ -1,3 +1,3 @@
 <div class="FooterComponent">
-            Hello from FooterComponent
-        </div>
+    Hello from FooterComponent!
+</div>

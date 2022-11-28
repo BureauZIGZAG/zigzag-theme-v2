@@ -14,7 +14,7 @@ const {ComponentGenerator} = require("./ComponentGenerator");
             message: 'Configure component:',
             choices: [
                 { title: 'SCSS', value: 'scss', selected: true },
-                { title: 'TS', value: 'ts' },
+                { title: 'TS', value: 'ts', disabled: true },
             ],
         }
     ]);

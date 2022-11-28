@@ -1,5 +1,4 @@
-@import 'styling/autoload';
-
 .FooterComponent {
-  background-color: tomato;
+  @apply bg-[tomato];
+  color: white;
 }

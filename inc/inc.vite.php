@@ -2,7 +2,9 @@
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) )
-    exit;  
+    exit;
+
+define('IS_VITE_DEVELOPMENT', false);
     
 /*
  * VITE & Tailwind JIT development
