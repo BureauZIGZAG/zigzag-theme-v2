@@ -1,6 +1,6 @@
 <?php
 
-use Theme\Inc\Lib\Component;
+use Freekattema\Wp\Components\Component;
 
 final class HeaderComponent extends Component {
     function get_template(): string
