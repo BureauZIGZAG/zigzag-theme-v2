@@ -1,6 +1,5 @@
 {
     "require": {
-        "twig/twig": "^3.0",
         "freekattema/wp-setup": "dev-master"
     }
 }
