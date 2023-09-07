@@ -7,7 +7,7 @@ module.exports = {
         './safelist.txt',
         './**/*.ts',
         './**/*.scss',
-        //'./**/*.php', // recursive search for *.php (be aware on every file change it will go even through /node_modules which can be slow, read doc)
+        './**/*.php', // recursive search for *.php (be aware on every file change it will go even through /node_modules which can be slow, read doc)
     ],
     theme: {
         container: {
