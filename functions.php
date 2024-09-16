@@ -1,10 +1,18 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if (!defined('ABSPATH'))
     exit;
 
 include_once "inc/inc.php";
+
+// PHP Console log function
+function console_log(...$data): void
+{
+    echo "
+<script>console.log(" . json_encode($data) . ");</script>";
+}
+
 
 \Freekattema\Wp\ThemeSetup\Theme::init([
     'hide_admin_posts' => true,

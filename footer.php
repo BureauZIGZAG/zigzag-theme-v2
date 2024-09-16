@@ -1,4 +1,4 @@
-<?php FooterComponent::get()->render(); ?>
+<?php FooterComponent::display(); ?>
 <?php wp_footer() ?>
 </body>
 </html>

@@ -1,4 +1,3 @@
 .HeaderComponent {
-  background: tomato;
-  color: white;
+  @apply text-white bg-primary;
 }

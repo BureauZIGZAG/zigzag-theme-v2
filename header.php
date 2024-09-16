@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,4 +10,4 @@
 <body <?php body_class() ?>>
 <?php wp_body_open(); ?>
 
-<?php HeaderComponent::get()->render(); ?>
+<?php HeaderComponent::display(); ?>

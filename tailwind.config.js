@@ -12,6 +12,7 @@ module.exports = {
     theme: {
         container: {
             center: true,
+            padding: '1rem',
         },
         extend: {
             fontFamily: {
@@ -19,7 +20,8 @@ module.exports = {
                 'header': ['var(--font-header)', 'sans-serif'],
             },
             colors: {
-
+                'white': '#ffffff',
+                'black': '#000000',
             },
         },
         screens: {

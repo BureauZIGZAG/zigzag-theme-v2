@@ -1,4 +1,6 @@
 @use 'utils/text';
+@import "pages/index";
+@import "variables/index";
 
 body {
   margin: 0;
@@ -9,6 +11,8 @@ body {
   min-height: 100vh;
   @apply flex flex-col;
   @apply font-primary;
+  scroll-behavior: smooth;
+  scroll-padding-top: 30vh;
 
   font-size: 16px;
   line-height: 1.5;
@@ -18,6 +22,6 @@ body {
   }
 
   @include text.headers {
-    @apply font-header;
+    @apply font-header text-primary;
   }
 }
