@@ -20,8 +20,13 @@ module.exports = {
                 'header': ['var(--font-header)', 'sans-serif'],
             },
             colors: {
-                'white': '#ffffff',
-                'black': '#000000',
+                zz: {
+                    primary: {
+                        DEFAULT: 'tomato',
+                    },
+                    white: '#ffffff',
+                    black: '#000000',
+                },
             },
         },
         screens: {
