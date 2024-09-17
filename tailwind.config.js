@@ -22,7 +22,9 @@ module.exports = {
             colors: {
                 zz: {
                     primary: {
-                        DEFAULT: 'tomato',
+                        dark: '#004C45',
+                        DEFAULT: '#266761',
+                        light: '#659490',
                     },
                     white: '#ffffff',
                     black: '#000000',

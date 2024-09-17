@@ -13,6 +13,9 @@ function console_log(...$data): void
 <script>console.log(" . json_encode($data) . ");</script>";
 }
 
+// Remove default Gravity Forms styling
+add_filter('gform_disable_form_theme_css', '__return_true');
+
 
 \Freekattema\Wp\ThemeSetup\Theme::init([
     'hide_admin_posts' => true,
