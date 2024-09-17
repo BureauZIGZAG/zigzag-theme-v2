@@ -22,6 +22,18 @@ body {
   }
 
   @include text.headers {
-    @apply font-header text-primary;
+    @apply font-header text-zz-primary font-extrabold;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.2em;
   }
 }

@@ -9,8 +9,7 @@ include_once "inc/inc.php";
 // PHP Console log function
 function console_log(...$data): void
 {
-    echo "
-<script>console.log(" . json_encode($data) . ");</script>";
+    echo "<script>console.log(" . json_encode($data) . ");</script>";
 }
 
 // Remove default Gravity Forms styling

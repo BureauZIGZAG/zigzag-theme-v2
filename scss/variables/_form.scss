@@ -1,0 +1,76 @@
+@import "btn";
+
+.gform_wrapper {
+
+  .gform_heading { // Header styling
+    @apply flex flex-col gap-2 mb-6;
+  }
+
+  form {
+    .gform_body { // Body styling
+      .gform_fields {
+        .gfield { // Field styling
+          @apply flex flex-col gap-2;
+
+          .gfield_label { // Label styling
+            @apply text-zz-black flex flex-row gap-2 w-fit font-bold;
+
+            .gfield_required {
+              @apply italic text-red-600;
+            }
+          }
+
+          .gfield_description { // Description styling
+            font-size: 0.9em;
+
+            &.validation_message {
+              @apply text-red-600 italic;
+            }
+          }
+
+          .ginput_container { // Input styling
+            @apply flex flex-col gap-2;
+
+            textarea, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], input[type="date"], input[type="time"], input[type="url"], input[type="file"], input[type="checkbox"], input[type="radio"] {
+              @apply w-full px-4 py-2 bg-zz-primary/20 rounded-md text-zz-black;
+
+              &::placeholder {
+                @apply text-zz-black/50;
+              }
+            }
+
+            &:has(.gform-grid-col) { // Input with sub-label styling
+              @apply flex flex-row gap-6;
+
+              .gform-grid-col {
+                @apply flex flex-col gap-2;
+
+                .gform-field-label {
+                  font-size: 0.9em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .gform_footer { // Footer styling
+      @apply mt-6;
+
+      .gform_button {
+        @include btn-primary;
+      }
+    }
+  }
+
+  .gform_validation_errors { // Error styling
+    @apply flex flex-col gap-2 mb-6 italic;
+    font-size: 0.9em;
+
+    .gform_submission_error {
+      @apply text-red-600 not-italic;
+      font-size: 1.2em;
+    }
+  }
+}

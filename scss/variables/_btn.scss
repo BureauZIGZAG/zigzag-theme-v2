@@ -1,10 +1,10 @@
 @mixin btn {
-  @apply flex w-fit items-center justify-center px-[20px] py-[10px] rounded-[12px] border-primary border-2;
+  @apply flex w-fit items-center justify-center px-[20px] py-[10px] rounded-[12px] border-zz-primary border-2;
 }
 
 @mixin btn-primary {
   @include btn;
-  @apply bg-primary;
+  @apply bg-zz-primary text-zz-white;
 }
 
 .btn-primary {
@@ -13,7 +13,7 @@
 
 @mixin btn-secondary {
   @include btn;
-  @apply text-primary;
+  @apply text-zz-primary bg-zz-white;
 }
 
 .btn-secondary {
